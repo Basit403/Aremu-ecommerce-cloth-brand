@@ -4,15 +4,22 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useCart } from "@/Context/CartContext";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function NavIcons() {
-  const { cart, clearCart, decreaseQuantity, increaseQuantity } = useCart();
+  const { cart, clearCart, decreaseQuantity, increaseQuantity, removeFromCart } = useCart();
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   const totalItems = mounted
     ? cart.reduce((sum, item) => sum + (item.quantity || 1), 0)
@@ -33,17 +40,16 @@ export default function NavIcons() {
       </div>
 
       {mounted && open && (
-        <div className="absolute right-0 mt-3 w-72 bg-white shadow-lg rounded-lg p-4 z-50">
+        <div className="absolute right-0 mt-3 w-96 bg-white shadow-lg rounded-lg p-4 z-50">
           <h3 className="font-semibold mb-3 text-xl">My Cart</h3>
 
           {cart.length === 0 ? (
             <p className="text-sm text-gray-500">Your cart is empty</p>
           ) : (
             <>
-              
               <ul className="space-y-3 max-h-64 overflow-y-auto">
-                {cart.map((item, index) => (
-                  <li key={index} className="flex items-center gap-3 border-b pb-2">
+                {cart.map((item) => (
+                  <li key={item.id} className="flex items-center gap-3 border-b pb-2">
                     
                     <Image
                       src={item.image}
@@ -75,6 +81,17 @@ export default function NavIcons() {
                         +
                       </button>
                     </div>
+                    <div className="w-6 h-6 flex items-center justify-center">
+                      <button onClick={() => removeFromCart(item.id)}>
+                        <Image 
+                          src="/trash.png" 
+                          alt="Remove"
+                          width={20}
+                          height={20}
+                          className="cursor-pointer"
+                        />
+                      </button>
+                    </div>  
                   </li>
                 ))}
               </ul>

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function CheckoutPage() {
-  const { cart, totalPrice, totalItems } = useCart();
+  const { cart, totalPrice, totalItems,removeFromCart } = useCart();
 
   const [mounted, setMounted] = useState(false);
 
@@ -24,9 +24,9 @@ export default function CheckoutPage() {
 
       {cart.length === 0 ? (
         <div className="text-center">
-          <p className="text-lg text-gray-600">Your cart is empty.</p>
+          <p className="text-lg text-gray-600">Your Cart is empty.</p>
           <Link href="/#products">
-            <button className="mt-4 bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800">
+            <button className="mt-4 bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 cursor-pointer">
               Shop Now
             </button>
           </Link>
@@ -54,6 +54,19 @@ export default function CheckoutPage() {
               </div>
 
               <p className="font-bold">₦{item.price * item.quantity}</p>
+
+              <button
+                onClick={() => removeFromCart(item.id)}
+                className="ml-4"
+              >
+                <Image
+                  src="/trash.png"
+                  alt="Remove"
+                  width={24}
+                  height={24}
+                  className="cursor-pointer"
+                />
+              </button>
             </div>
           ))}
 
