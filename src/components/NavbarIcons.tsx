@@ -40,7 +40,7 @@ export default function NavIcons() {
       </div>
 
       {mounted && open && (
-        <div className="absolute right-0 mt-3 w-96 bg-white shadow-lg rounded-lg p-4 z-50">
+        <div className="absolute right-0 mt-3 w-79 bg-white shadow-lg rounded-lg p-4 z-50">
           <h3 className="font-semibold mb-3 text-xl">My Cart</h3>
 
           {cart.length === 0 ? (
