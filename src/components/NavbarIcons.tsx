@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useCart } from "@/Context/CartContext";
 import Link from "next/link";
@@ -10,6 +10,7 @@ export default function NavIcons() {
   const { cart, clearCart, decreaseQuantity, increaseQuantity, removeFromCart } = useCart();
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
+  const cartRef = useRef<HTMLDivElement>(null);
 
   const pathname = usePathname();
 
@@ -21,6 +22,22 @@ export default function NavIcons() {
     setOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (cartRef.current && !cartRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
+
   const totalItems = mounted
     ? cart.reduce((sum, item) => sum + (item.quantity || 1), 0)
     : 0;
@@ -30,7 +47,6 @@ export default function NavIcons() {
       
       <div onClick={() => setOpen(!open)} className="cursor-pointer relative">
         <Image src="/shopping-cart.png" alt="Cart" width={40} height={40} />
-
         
         {mounted && totalItems > 0 && (
           <span className="absolute -top-2 -right-2 bg-black text-white text-xs px-2 py-0.5 rounded-full">
@@ -40,7 +56,7 @@ export default function NavIcons() {
       </div>
 
       {mounted && open && (
-        <div className="absolute right-0 mt-3 w-79 bg-white shadow-lg rounded-lg p-4 z-50">
+        <div ref={cartRef} className="absolute right-0 mt-3 w-79 bg-white shadow-lg rounded-lg p-4 z-50">
           <h3 className="font-semibold mb-3 text-xl">My Cart</h3>
 
           {cart.length === 0 ? (
@@ -58,7 +74,6 @@ export default function NavIcons() {
                       height={50}
                       className="rounded-md object-cover"
                     />
-
                     
                     <div className="flex-1">
                       <span className="block font-medium">{item.name}</span>

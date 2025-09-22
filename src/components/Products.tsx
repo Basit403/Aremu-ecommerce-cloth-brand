@@ -4,33 +4,8 @@ import Image from "next/image";
 import { useCart } from "@/Context/CartContext";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-
-
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-};
-
-const products: Product[] = [
-  { id: 1, name: "Hoodie Green", price: 15000, image: "/green-hoodie.png" },
-  { id: 2, name: "Cap Black", price: 5000, image: "/face-cap.png" },
-  { id: 3, name: "Male Polo Black", price: 8000, image: "/male-polo.png" },
-  { id: 4, name: "Male Polo Cream", price: 6000, image: "/male-polo cream.png" },
-  { id: 5, name: "Aremu White", price: 30000, image: "/creaml.png"},
-  { id: 6, name: "Hat Cream", price: 10000, image: "/unisex-hat.png"},
-  { id: 7, name: "Female Cream Top", price: 25000, image: "/female.png"},
-  { id: 8, name: "Female Black Top", price: 20000, image: "/female-black.png"},
-  { id: 9, name: "Hoodie Green", price: 15000, image: "/green-hoodie.png" },
-  { id: 10, name: "Cap Black", price: 5000, image: "/face-cap.png" },
-  { id: 11, name: "Male Polo Black", price: 8000, image: "/male-polo.png" },
-  { id: 12, name: "Male Polo Cream", price: 6000, image: "/male-polo cream.png" },
-  { id: 13, name: "Aremu White", price: 30000, image: "/creaml.png"},
-  { id: 14, name: "Hat Cream", price: 10000, image: "/unisex-hat.png"},
-  { id: 15, name: "Female Cream Top", price: 25000, image: "/female.png"},
-  // { id: 16, name: "Female Black Top", price: 20000, image: "/female-black.png"},
-];
+import Link from "next/link";
+import { products } from "@/Data/products";
 
 export default function ProductList() {
 
@@ -103,6 +78,11 @@ export default function ProductList() {
               >
                 Add to Cart
               </button>
+              <Link href={`/product/${product.id}`}>
+                <button className="mt-2 ml-2 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 cursor-pointer">
+                  Show Details
+                </button>
+              </Link>
             </div>
           ))
         ) : (

@@ -1,0 +1,26 @@
+export type Product = {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  description: string;
+};
+
+export const products: Product[] = [
+  { id: 1, name: "Hoodie Green", price: 15000, image: "/green-hoodie.png", description: "A stylish green hoodie for casual wear.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion. " },
+  { id: 2, name: "Cap Black", price: 5000, image: "/face-cap.png", description: "Black face cap perfect for sunny days.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion." },
+  { id: 3, name: "Male Polo Black", price: 8000, image: "/male-polo.png", description: "Classic black polo for men.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion." },
+  { id: 4, name: "Male Polo Cream", price: 6000, image: "/male-polo cream.png", description: "Cream polo with soft cotton fabric.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion." },
+  { id: 5, name: "Aremu White", price: 30000, image: "/creaml.png", description:"White polo with soft cotton fabric.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion."},
+  { id: 6, name: "Hat Cream", price: 10000, image: "/unisex-hat.png", description:"Hat cream with soft cotton fabric.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion."},
+  { id: 7, name: "Female Cream Top", price: 25000, image: "/female.png", description:"Female Cream Top with soft cotton fabric.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion."},
+  { id: 8, name: "Female Black Top", price: 20000, image: "/female-black.png", description:"Female Black Top with soft cotton fabric.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion."},
+  { id: 9, name: "Hoodie Green", price: 15000, image: "/green-hoodie.png", description: "A stylish green hoodie for casual wear.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion. " },
+  { id: 10, name: "Cap Black", price: 5000, image: "/face-cap.png", description: "Black face cap perfect for sunny days.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion." },
+  { id: 11, name: "Male Polo Black", price: 8000, image: "/male-polo.png", description: "Classic black polo for men.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion." },
+  { id: 12, name: "Male Polo Cream", price: 6000, image: "/male-polo cream.png", description: "Cream polo with soft cotton fabric.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion." },
+  { id: 13, name: "Aremu White", price: 30000, image: "/creaml.png", description:"White polo with soft cotton fabric.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion."},
+  { id: 14, name: "Hat Cream", price: 10000, image: "/unisex-hat.png", description:"Hat cream with soft cotton fabric.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion."},
+  { id: 15, name: "Aremu Belt", price: 7000, image: "/beltbr.png", description:"Aremu belt with soft materials.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion."},
+  { id: 16, name: "Aremu Belt", price: 8000, image: "/beltbl.png", description:"Aremu black belt with soft materials.Crafted with care to combine style and comfort for everyday wear,designed from quality materials to ensure durability and a perfect fit.A versatile piece that elevates your wardrobe for any occasion"},
+];
